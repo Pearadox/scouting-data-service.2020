@@ -11,7 +11,7 @@
 8. [Api : GetMatchDataByTeamAndCompetition()](#GetMatchDataByTeamAndCompetition)
 9. [Api : getAllStudentsToCsv()](#getAllStudentsToCsv)
 10. [Api : getAllMatchesToCsv()](#getAllMatchesToCsv)
-11. [Api : getMatchByTargetValueToCsv()](#getMatchByTargetValueToCsv)
+11. [Api : getAllMatchesWithBalanceClimberToCsv()](#getAllMatchesWithBalanceClimberToCsv)
 12. [TODO/InProgress](#TODO)
 
 ## Scouting Draft - Use Cases <a name="use-case"></a>
@@ -161,9 +161,10 @@ Scouting Draft Web Api handles
 - RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
 - https://us-central1-pearadox-2020.cloudfunctions.net/getAllStudentsToCsv
 
-## Api - getMatchByTargetValueToCsv2() <a name="getMatchByTargetValueToCsv"></a>
+## Api - getAllMatchesToCsv() <a name="getAllMatchesToCsv"></a>
 
-- this will downlaod a CSV file which contains all the match with the target value
+- this will downlaod a CSV file which contains all the match properties (explicit list)
+  NO FILTER
 
   ```powershell
 
@@ -175,21 +176,24 @@ Scouting Draft Web Api handles
 - RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
 - https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesToCsv
 
-## Api - getAllMatchesToCsv() <a name="getAllMatchesToCsv"></a>
+## Api - getAllMatchesWithBalanceClimberToCsv() <a name="getAllMatchesWithBalanceClimberToCsv"></a>
 
 - this will downlaod a CSV file which contains all the match properties (explicit list)
+  with filtering on the climb and balance total value (sum of those two booleans )
 
 ```powershell
 
-    GET /getMatchByTargetValueToCsv2/{target-value}
+    GET /getAllMatchesWithBalanceClimberToCsv/{target-value}
 
 ```
 
-{inprogress} :- only filter the tele_CargoLPan for now with the {target-value}
+the matches with both climb and balance
 
-- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesWithTargetValueToCsv2/2
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesWithBalanceClimberToCsv/2
 
-- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesWithTargetValueToCsv2/3
+the matches with at least one on ( climb and balance)
+
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesWithBalanceClimberToCsv/1
 
 ## TODO/InProgress <a name="TODO"></a>
 
