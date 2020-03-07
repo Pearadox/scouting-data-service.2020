@@ -309,7 +309,7 @@ function isLargerThanTwo(element: any, index: any, array: any) {
   return element.BalanceClimbed >= 1;
 }
 
-exports.getAllMatchesWithBalanceClimberToCsv = functions.https.onRequest(
+exports.getAllMatchesToCsvFilterOnBalanceClimber = functions.https.onRequest(
   async (req, response) => {
     const params = req.url.split("/");
     const limitValue = Number(params[1]);
@@ -318,7 +318,7 @@ exports.getAllMatchesWithBalanceClimberToCsv = functions.https.onRequest(
     await admin
       .database()
       // .ref("match-data/".concat(competitionId))
-      .ref("match-data/ftcmp")
+      .ref("match-data/txpla")
       .once(
         "value",
         function(snapshot) {

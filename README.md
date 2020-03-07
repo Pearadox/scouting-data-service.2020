@@ -11,7 +11,7 @@
 8. [Api : GetMatchDataByTeamAndCompetition()](#GetMatchDataByTeamAndCompetition)
 9. [Api : getAllStudentsToCsv()](#getAllStudentsToCsv)
 10. [Api : getAllMatchesToCsv()](#getAllMatchesToCsv)
-11. [Api : getAllMatchesWithBalanceClimberToCsv()](#getAllMatchesWithBalanceClimberToCsv)
+11. [Api : getAllMatchesToCsvFilterOnBalanceClimber()](#getAllMatchesToCsvFilterOnBalanceClimber)
 12. [TODO/InProgress](#TODO)
 
 ## Scouting Draft - Use Cases <a name="use-case"></a>
@@ -176,24 +176,24 @@ Scouting Draft Web Api handles
 - RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
 - https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesToCsv
 
-## Api - getAllMatchesWithBalanceClimberToCsv() <a name="getAllMatchesWithBalanceClimberToCsv"></a>
+## Api - getAllMatchesToCsvFilterOnBalanceClimber() <a name="getAllMatchesToCsvFilterOnBalanceClimber"></a>
 
 - this will downlaod a CSV file which contains all the match properties (explicit list)
   with filtering on the climb and balance total value (sum of those two booleans )
 
 ```powershell
 
-    GET /getAllMatchesWithBalanceClimberToCsv/{target-value}
+    GET /getAllMatchesToCsvFilterOnBalanceClimber/{target-value}
 
 ```
 
 the matches with both climb and balance
 
-- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesWithBalanceClimberToCsv/2
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesToCsvFilterOnBalanceClimber/2
 
 the matches with at least one on ( climb and balance)
 
-- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesWithBalanceClimberToCsv/1
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesToCsvFilterOnBalanceClimber/1
 
 ## TODO/InProgress <a name="TODO"></a>
 
