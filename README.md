@@ -10,8 +10,9 @@
 7. [Api : GetMatchData()](#GetMatchData)
 8. [Api : GetMatchDataByTeamAndCompetition()](#GetMatchDataByTeamAndCompetition)
 9. [Api : getAllStudentsToCsv()](#getAllStudentsToCsv)
-10. [Api : getMatchByTargetValueToCsv()](#getMatchByTargetValueToCsv)
-11. [TODO/InProgress](#TODO)
+10. [Api : getAllMatchesToCsv()](#getAllMatchesToCsv)
+11. [Api : getMatchByTargetValueToCsv()](#getMatchByTargetValueToCsv)
+12. [TODO/InProgress](#TODO)
 
 ## Scouting Draft - Use Cases <a name="use-case"></a>
 
@@ -55,24 +56,23 @@ Scouting Draft Web Api handles
   firebase deploy --only functions:getAllByTypeToCsv,functions:GetMatchDataByTeamAndCompetition
   ```
 
-- for testing purpose, recommended to create your own firebase project:
+- for testing purpose ONLY, recommended to create your own firebase project:
 
   ```powershell
   1) create new firebase
 
   2) export the data (as json .~10mb) from existing team DB -> pearadox-2019 https://console.firebase.google.com/u/0/project/pearadox-2019/database/pearadox-2019/data~2F
 
-  3) for iinstance, I created my own instance called "scouting-draft-test"
-  https://console.firebase.google.com/u/0/project/scouting-draft-test/database
+  3) for iinstance, I created my own instance called "pearadox-2020-test-only"
+  https://console.firebase.google.com/u/0/project/pearadox-2020-test/database
 
   ```
 
 ## Api - for beginner <a name="beginner"></a>
 
-- Root Page : https://console.firebase.google.com/u/0/project/scouting-draft-test/overview
-- RealTime DB: https://console.firebase.google.com/u/0/project/scouting-draft-test/database/scouting-draft-test/data~2Fmatch-data
-- (for beginner) helloworld : https://us-central1-scouting-draft-test.cloudfunctions.net/helloWorld
-- (for beginner) Get Single Student : https://us-central1-scouting-draft-test.cloudfunctions.net/getStudent
+- Root Page : https://console.firebase.google.com/u/0/project/pearadox-2020/overview
+- Match data - RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/pearadox-2020/data~2Fmatch-data
+- (for beginner) helloworld : https://us-central1-pearadox-2020.cloudfunctions.net/helloWorld
 
 ## Api - getAllByType() <a name="getAllByType"></a>
 
@@ -84,18 +84,18 @@ Scouting Draft Web Api handles
 
   ```
 
-- Root Page : https://console.firebase.google.com/u/0/project/scouting-draft-test/overview
-- RealTime DB: https://console.firebase.google.com/u/0/project/scouting-draft-test/database/
+- Root Page : https://console.firebase.google.com/u/0/project/pearadox-2020/overview
+- RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
 
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllByType/current-match
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllByType/devices
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllByType/match-data
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllByType/matches
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllByType/rank
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllByType/students
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllByType/competitions
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllByType/teams
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllByType/pit-data
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllByType/current-match
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllByType/devices
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllByType/match-data
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllByType/matches
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllByType/rank
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllByType/students
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllByType/competitions
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllByType/teams
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllByType/pit-data
 
 ## Api - GetSingleByTypeAndId() <a name="GetSingleByTypeAndId"></a>
 
@@ -107,13 +107,13 @@ Scouting Draft Web Api handles
 
   ```
 
-- Root Page : https://console.firebase.google.com/u/0/project/scouting-draft-test/overview
-- RealTime DB: https://console.firebase.google.com/u/0/project/scouting-draft-test/database/
+- Root Page : https://console.firebase.google.com/u/0/project/pearadox-2020/overview
+- RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
 
-- https://us-central1-scouting-draft-test.cloudfunctions.net/GetSingleByTypeAndId/competitions/txcha
-- https://us-central1-scouting-draft-test.cloudfunctions.net/GetSingleByTypeAndId/teams/ftcmp
-- https://us-central1-scouting-draft-test.cloudfunctions.net/GetSingleByTypeAndId/match-data/ftcmp
-- https://us-central1-scouting-draft-test.cloudfunctions.net/GetSingleByTypeAndId/match-data/test
+- https://us-central1-pearadox-2020.cloudfunctions.net/GetSingleByTypeAndId/competitions/txpla
+- https://us-central1-pearadox-2020.cloudfunctions.net/GetSingleByTypeAndId/teams/txpla
+- https://us-central1-pearadox-2020.cloudfunctions.net/GetSingleByTypeAndId/match-data/txpla
+- https://us-central1-pearadox-2020.cloudfunctions.net/GetSingleByTypeAndId/match-data/test
 
 ## Api - GetMatchData() <a name="GetMatchData"></a>
 
@@ -126,12 +126,12 @@ Scouting Draft Web Api handles
 
   ```
 
-- Root Page : https://console.firebase.google.com/u/0/project/scouting-draft-test/overview
-- RealTime DB: https://console.firebase.google.com/u/0/project/scouting-draft-test/database/
+- Root Page : https://console.firebase.google.com/u/0/project/pearadox-2020/overview
+- RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
 - all 6 matches in match [001] in competition [gal]
-  -- https://us-central1-scouting-draft-test.cloudfunctions.net/GetMatchData/gal/001-
+  -- https://us-central1-pearadox-2020.cloudfunctions.net/GetMatchData/txpla/001-
 - one result (as there is only 1 team-name starting with '45') :- with string matching logic
-  -- https://us-central1-scouting-draft-test.cloudfunctions.net/GetMatchData/gal/001-45
+  -- https://us-central1-pearadox-2020.cloudfunctions.net/GetMatchData/txpla/001-45
 
 ## Api - GetMatchDataByTeamAndCompetition() <a name="GetMatchDataByTeamAndCompetition"></a>
 
@@ -143,9 +143,9 @@ Scouting Draft Web Api handles
 
   ```
 
-- Root Page : https://console.firebase.google.com/u/0/project/scouting-draft-test/overview
-- RealTime DB: https://console.firebase.google.com/u/0/project/scouting-draft-test/database/
-- https://us-central1-scouting-draft-test.cloudfunctions.net/GetMatchDataByTeamAndCompetition/ftcmp/1255
+- Root Page : https://console.firebase.google.com/u/0/project/pearadox-2020/overview
+- RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
+- https://us-central1-pearadox-2020.cloudfunctions.net/GetMatchDataByTeamAndCompetition/txpla/5414
 
 ## Api - getAllStudentsToCsv() <a name="getAllStudentsToCsv"></a>
 
@@ -157,9 +157,9 @@ Scouting Draft Web Api handles
 
   ```
 
-- Root Page : https://console.firebase.google.com/u/0/project/scouting-draft-test/overview
-- RealTime DB: https://console.firebase.google.com/u/0/project/scouting-draft-test/database/
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllStudentsToCsv
+- Root Page : https://console.firebase.google.com/u/0/project/pearadox-2020/overview
+- RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllStudentsToCsv
 
 ## Api - getMatchByTargetValueToCsv2() <a name="getMatchByTargetValueToCsv"></a>
 
@@ -167,15 +167,29 @@ Scouting Draft Web Api handles
 
   ```powershell
 
-      GET /getMatchByTargetValueToCsv2/{target-value}
+      GET /getAllMatchesToCsv
 
   ```
 
+- Root Page : https://console.firebase.google.com/u/0/project/pearadox-2020/overview
+- RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesToCsv
+
+## Api - getAllMatchesToCsv() <a name="getAllMatchesToCsv"></a>
+
+- this will downlaod a CSV file which contains all the match properties (explicit list)
+
+```powershell
+
+    GET /getMatchByTargetValueToCsv2/{target-value}
+
+```
+
 {inprogress} :- only filter the tele_CargoLPan for now with the {target-value}
 
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllMatchesWithTargetValueToCsv2/2
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesWithTargetValueToCsv2/2
 
-- https://us-central1-scouting-draft-test.cloudfunctions.net/getAllMatchesWithTargetValueToCsv2/3
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesWithTargetValueToCsv2/3
 
 ## TODO/InProgress <a name="TODO"></a>
 

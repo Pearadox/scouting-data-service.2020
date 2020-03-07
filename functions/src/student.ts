@@ -14,42 +14,68 @@ export class Student implements Usercheck {
 
 interface IMatch {
   team_num: string;
-  tele_CargoLPan1: boolean;
-  tele_CargoLPan2: boolean;
-  tele_CargoLPan3: boolean;
-  tele_CargoRPan1: boolean;
-  tele_CargoRPan2: boolean;
-  tele_CargoRPan3: boolean;
-  // CargoLPanCount: number;
-  // CargoRPanCount: number;
+  match: string;
+  tele_Balanced: boolean;
+  tele_Climbed: boolean;
+  pre_startPos: string;
+  auto_HighClose: number;
+  auto_HighFrontCP: number;
+  auto_HighLine: number;
+  auto_Low: number;
+  tele_Hang_num: number;
+  tele_HighBackCP: number;
+  tele_HighClose: number;
+  tele_HighFrontCP: number;
+  tele_HighLine: number;
+  tele_Low: number;
+  tele_liftedNum: number;
+  tele_num_Penalties: number;
+  tele_comment: string;
+  final_comment: string;
+  final_dateTime: Date;
+
+  BalanceClimbed: number;
 }
 
 export class Match implements IMatch {
-  CargoLPanCount: number;
-  CargoRPanCount: number;
+  BalanceClimbed: number;
   constructor(
     public team_num: string,
-    public tele_CargoLPan1: boolean,
-    public tele_CargoLPan2: boolean,
-    public tele_CargoLPan3: boolean,
-    public tele_CargoRPan1: boolean,
-    public tele_CargoRPan2: boolean,
-    public tele_CargoRPan3: boolean
+    public match: string,
+    public tele_Balanced: boolean,
+    public tele_Climbed: boolean,
+    public pre_startPos: string,
+    public auto_HighClose: number,
+    public auto_HighFrontCP: number,
+    public auto_HighLine: number,
+    public auto_Low: number,
+    public tele_Hang_num: number,
+    public tele_HighBackCP: number,
+
+    public tele_HighClose: number,
+    public tele_HighFrontCP: number,
+    public tele_HighLine: number,
+    public tele_Low: number,
+    public tele_liftedNum: number,
+    public tele_num_Penalties: number,
+    public tele_comment: string,
+    public final_comment: string,
+    public final_dateTime: Date
   ) {
     this.team_num = team_num;
-    this.tele_CargoLPan1 = tele_CargoLPan1;
-    this.tele_CargoLPan2 = tele_CargoLPan2;
-    this.tele_CargoLPan3 = tele_CargoLPan3;
-    this.tele_CargoRPan1 = tele_CargoRPan1;
-    this.tele_CargoRPan2 = tele_CargoRPan2;
-    this.tele_CargoRPan3 = tele_CargoRPan3;
-    this.CargoLPanCount =
-      (tele_CargoLPan1 ? 1 : 0) +
-      (tele_CargoLPan2 ? 1 : 0) +
-      (tele_CargoLPan3 ? 1 : 0);
-    this.CargoRPanCount =
-      (tele_CargoRPan1 ? 1 : 0) +
-      (tele_CargoRPan2 ? 1 : 0) +
-      (tele_CargoRPan3 ? 1 : 0);
+    this.match = match;
+    this.pre_startPos = pre_startPos;
+    this.auto_HighClose = auto_HighClose;
+    this.auto_HighFrontCP = auto_HighFrontCP;
+    this.auto_HighLine = auto_HighLine;
+    this.auto_Low = auto_Low;
+    this.tele_Hang_num = tele_Hang_num;
+    this.tele_HighBackCP = tele_HighBackCP;
+
+    this.BalanceClimbed = (tele_Balanced ? 1 : 0) + (tele_Climbed ? 1 : 0);
+    // this.CargoRPanCount =
+    //   (tele_CargoRPan1 ? 1 : 0) +
+    //   (tele_CargoRPan2 ? 1 : 0) +
+    //   (tele_CargoRPan3 ? 1 : 0);
   }
 }
