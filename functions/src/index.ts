@@ -1,6 +1,8 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
-import { Student, LiteMatch } from "./student";
+import { Student } from "./Student";
+import { LiteMatch } from "./LiteMatch";
+import { Match } from "./Match";
 
 admin.initializeApp();
 
@@ -155,27 +157,62 @@ exports.getAllMatchDataRawToCsv = functions.https.onRequest(
           snapshot.forEach(function(childSnapshot) {
             const childData = childSnapshot.val();
             matches.push(
-              new LiteMatch(
-                childData.team_num,
-                childData.match,
-                childData.tele_Balanced,
-                childData.tele_Climbed,
-                childData.pre_startPos,
+              new Match(
+                childData.auto_CollectCP,
+                childData.auto_CollectFloor,
+                childData.auto_CollectRobot,
+                childData.auto_CollectSGboundary,
+                childData.auto_CollectTrench,
+                childData.auto_Dump,
                 childData.auto_HighClose,
                 childData.auto_HighFrontCP,
                 childData.auto_HighLine,
                 childData.auto_Low,
+                childData.auto_comment,
+                childData.auto_conInnerClose,
+                childData.auto_conInnerFrontCP,
+                childData.auto_conInnerLine,
+                childData.auto_leftSectorLine,
+                childData.auto_mode,
+                childData.final_comment,
+                childData.final_dateTime,
+                childData.final_def_Block,
+                childData.final_def_TrenchInt,
+                childData.final_defense_good,
+                childData.final_lostComms,
+                childData.final_lostParts,
+                childData.final_studID,
+                childData.match,
+                childData.pre_PlayerSta,
+                childData.pre_cells_carried,
+                childData.pre_startPos,
+                childData.team_num,
+                childData.tele_Balanced,
+                childData.tele_CPcolor,
+                childData.tele_CPspin,
+                childData.tele_Climbed,
                 childData.tele_Hang_num,
                 childData.tele_HighBackCP,
                 childData.tele_HighClose,
                 childData.tele_HighFrontCP,
                 childData.tele_HighLine,
                 childData.tele_Low,
-                childData.tele_liftedNum,
-                childData.tele_num_Penalties,
+                childData.tele_PowerCell_Boundary,
+                childData.tele_PowerCell_CP,
+                childData.tele_PowerCell_LoadSta,
+                childData.tele_PowerCell_Robot,
+                childData.tele_PowerCell_Trench,
+                childData.tele_PowerCell_floor,
+                childData.tele_UnderSG,
                 childData.tele_comment,
-                childData.final_comment,
-                childData.final_dateTime
+                childData.tele_conInnerBackCP,
+                childData.tele_conInnerClose,
+                childData.tele_conInnerFrontCP,
+                childData.tele_conInnerLine,
+                childData.tele_got_lift,
+                childData.tele_lifted,
+                childData.tele_liftedNum,
+                childData.tele_num_Penalties
               )
             );
           });
@@ -188,25 +225,61 @@ exports.getAllMatchDataRawToCsv = functions.https.onRequest(
     try {
       const { Parser } = require("json2csv");
       const csv = new Parser([
-        "team_num",
-        "match",
-        "pre_startPos",
+        "auto_CollectCP",
+        "auto_CollectFloor",
+        "auto_CollectRobot",
+        "auto_CollectSGboundary",
+        "auto_CollectTrench",
+        "auto_Dump",
         "auto_HighClose",
         "auto_HighFrontCP",
         "auto_HighLine",
         "auto_Low",
+        "auto_comment",
+        "auto_conInnerClose",
+        "auto_conInnerFrontCP",
+        "auto_conInnerLine",
+        "auto_leftSectorLine",
+        "auto_mode",
+        "final_comment",
+        "final_dateTime: Date",
+        "final_def_Block",
+        "final_def_TrenchInt",
+        "final_defense_good",
+        "final_lostComms",
+        "final_lostParts",
+        "final_studID",
+        "match",
+        "pre_PlayerSta",
+        "pre_cells_carried",
+        "pre_startPos",
+        "team_num",
+        "tele_Balanced",
+        "tele_CPcolor",
+        "tele_CPspin",
+        "tele_Climbed",
         "tele_Hang_num",
         "tele_HighBackCP",
-
         "tele_HighClose",
         "tele_HighFrontCP",
         "tele_HighLine",
         "tele_Low",
-        "tele_liftedNum",
-        "tele_num_Penalties",
+        "tele_PowerCell_Boundary",
+        "tele_PowerCell_CP",
+        "tele_PowerCell_LoadSta",
+        "tele_PowerCell_Robot",
+        "tele_PowerCell_Trench",
+        "tele_PowerCell_floor",
+        "tele_UnderSG",
         "tele_comment",
-        "final_comment",
-        "final_dateTime"
+        "tele_conInnerBackCP",
+        "tele_conInnerClose",
+        "tele_conInnerFrontCP",
+        "tele_conInnerLine",
+        "tele_got_lift",
+        "tele_lifted",
+        "tele_liftedNum",
+        "tele_num_Penalties"
       ]).parse(matches);
       response.setHeader(
         "Content-disposition",
