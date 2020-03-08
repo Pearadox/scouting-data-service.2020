@@ -143,9 +143,9 @@ exports.getAllStudentsToCsv = functions.https.onRequest(
   }
 );
 
-exports.getAllMatchDataRawToCsv = functions.https.onRequest(
+exports.getAllMatchDataRawToCsv3 = functions.https.onRequest(
   async (req, response) => {
-    const matches: LiteMatch[] = [];
+    const matches: Match[] = [];
 
     await admin
       .database()
@@ -283,14 +283,14 @@ exports.getAllMatchDataRawToCsv = functions.https.onRequest(
       ]).parse(matches);
       response.setHeader(
         "Content-disposition",
-        "attachment; filename=match.csv"
+        "attachment; filename=raw-match.csv"
       );
       response.set("Content-Type", "text/csv");
       response.status(200).send(csv);
     } catch (err) {
       console.error(err);
     }
-    console.log("getAllMatchesToCsv - end");
+    console.log("getAllMatchDataRawToCsv3 - end");
   }
 );
 
