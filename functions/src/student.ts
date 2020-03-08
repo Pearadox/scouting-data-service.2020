@@ -12,7 +12,7 @@ export class Student implements Usercheck {
   }
 }
 
-interface IMatch {
+interface ILiteMatch {
   team_num: string;
   match: string;
   tele_Balanced: boolean;
@@ -37,7 +37,7 @@ interface IMatch {
   BalanceClimbed: number;
 }
 
-export class Match implements IMatch {
+export class LiteMatch implements ILiteMatch {
   BalanceClimbed: number;
   constructor(
     public team_num: string,

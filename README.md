@@ -10,7 +10,7 @@
 7. [Api : GetMatchData()](#GetMatchData)
 8. [Api : GetMatchDataByTeamAndCompetition()](#GetMatchDataByTeamAndCompetition)
 9. [Api : getAllStudentsToCsv()](#getAllStudentsToCsv)
-10. [Api : getAllMatchesToCsv()](#getAllMatchesToCsv)
+10. [Api : getAllMatchDataRawToCsv()](#getAllMatchDataRawToCsv)
 11. [Api : getAllMatchesToCsvFilterOnBalanceClimber()](#getAllMatchesToCsvFilterOnBalanceClimber)
 12. [TODO/InProgress](#TODO)
 
@@ -131,7 +131,7 @@ Scouting Draft Web Api handles
 - all 6 matches in match [001] in competition [gal]
   -- https://us-central1-pearadox-2020.cloudfunctions.net/GetMatchData/txpla/001-
 - one result (as there is only 1 team-name starting with '45') :- with string matching logic
-  -- https://us-central1-pearadox-2020.cloudfunctions.net/GetMatchData/txpla/001-45
+  -- https://us-central1-pearadox-2020.cloudfunctions.net/GetMatchData/txpla/001-7
 
 ## Api - GetMatchDataByTeamAndCompetition() <a name="GetMatchDataByTeamAndCompetition"></a>
 
@@ -161,20 +161,34 @@ Scouting Draft Web Api handles
 - RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
 - https://us-central1-pearadox-2020.cloudfunctions.net/getAllStudentsToCsv
 
-## Api - getAllMatchesToCsv() <a name="getAllMatchesToCsv"></a>
+## Api - getAllMatchDataRawToCsv() <a name="getAllMatchDataRawToCsv"></a>
+
+- this will downlaod a CSV file which contains all the match properties NO FILTER
+
+  ```powershell
+
+      GET /getAllMatchDataRawToCsv
+
+  ```
+
+- Root Page : https://console.firebase.google.com/u/0/project/pearadox-2020/overview
+- RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchDataRawToCsv
+
+## Api - getAllMatchesLiteToCsv() <a name="getAllMatchesLiteToCsv"></a>
 
 - this will downlaod a CSV file which contains all the match properties (explicit list)
   NO FILTER
 
   ```powershell
 
-      GET /getAllMatchesToCsv
+      GET /getAllMatchesLiteToCsv
 
   ```
 
 - Root Page : https://console.firebase.google.com/u/0/project/pearadox-2020/overview
 - RealTime DB: https://console.firebase.google.com/u/0/project/pearadox-2020/database/
-- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesToCsv
+- https://us-central1-pearadox-2020.cloudfunctions.net/getAllMatchesLiteToCsv
 
 ## Api - getAllMatchesToCsvFilterOnBalanceClimber() <a name="getAllMatchesToCsvFilterOnBalanceClimber"></a>
 

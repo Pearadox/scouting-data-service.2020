@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
-import { Student, Match } from "./student";
+import { Student, LiteMatch } from "./student";
 
 admin.initializeApp();
 
@@ -141,9 +141,9 @@ exports.getAllStudentsToCsv = functions.https.onRequest(
   }
 );
 
-exports.getAllMatchesToCsv = functions.https.onRequest(
+exports.getAllMatchDataRawToCsv = functions.https.onRequest(
   async (req, response) => {
-    const matches: Match[] = [];
+    const matches: LiteMatch[] = [];
 
     await admin
       .database()
@@ -155,7 +155,7 @@ exports.getAllMatchesToCsv = functions.https.onRequest(
           snapshot.forEach(function(childSnapshot) {
             const childData = childSnapshot.val();
             matches.push(
-              new Match(
+              new LiteMatch(
                 childData.team_num,
                 childData.match,
                 childData.tele_Balanced,
@@ -221,9 +221,9 @@ exports.getAllMatchesToCsv = functions.https.onRequest(
   }
 );
 
-exports.getAllMatchesWithTargetValueToCsv = functions.https.onRequest(
+exports.getAllMatchesLiteToCsv = functions.https.onRequest(
   async (req, response) => {
-    const matches: Match[] = [];
+    const matches: LiteMatch[] = [];
 
     await admin
       .database()
@@ -235,25 +235,22 @@ exports.getAllMatchesWithTargetValueToCsv = functions.https.onRequest(
           snapshot.forEach(function(childSnapshot) {
             const childData = childSnapshot.val();
             matches.push(
-              new Match(
+              new LiteMatch(
                 childData.team_num,
                 childData.match,
                 childData.tele_Balanced,
                 childData.tele_Climbed,
                 childData.pre_startPos,
                 childData.auto_HighClose,
-
                 childData.auto_HighFrontCP,
                 childData.auto_HighLine,
                 childData.auto_Low,
                 childData.tele_Hang_num,
                 childData.tele_HighBackCP,
-
                 childData.tele_HighClose,
                 childData.tele_HighFrontCP,
                 childData.tele_HighLine,
                 childData.tele_Low,
-
                 childData.tele_liftedNum,
                 childData.tele_num_Penalties,
                 childData.tele_comment,
@@ -273,8 +270,6 @@ exports.getAllMatchesWithTargetValueToCsv = functions.https.onRequest(
       const csv = new Parser([
         "team_num",
         "match",
-        "tele_Balanced",
-        "tele_Climbed",
         "pre_startPos",
         "auto_HighClose",
         "auto_HighFrontCP",
@@ -282,6 +277,7 @@ exports.getAllMatchesWithTargetValueToCsv = functions.https.onRequest(
         "auto_Low",
         "tele_Hang_num",
         "tele_HighBackCP",
+
         "tele_HighClose",
         "tele_HighFrontCP",
         "tele_HighLine",
@@ -291,7 +287,7 @@ exports.getAllMatchesWithTargetValueToCsv = functions.https.onRequest(
         "tele_comment",
         "final_comment",
         "final_dateTime"
-      ]).parse(matches.filter(isLargerThanTwo));
+      ]).parse(matches);
       response.setHeader(
         "Content-disposition",
         "attachment; filename=match.csv"
@@ -305,15 +301,11 @@ exports.getAllMatchesWithTargetValueToCsv = functions.https.onRequest(
   }
 );
 
-function isLargerThanTwo(element: any, index: any, array: any) {
-  return element.BalanceClimbed >= 1;
-}
-
 exports.getAllMatchesToCsvFilterOnBalanceClimber = functions.https.onRequest(
   async (req, response) => {
     const params = req.url.split("/");
     const limitValue = Number(params[1]);
-    const matches: Match[] = [];
+    const matches: LiteMatch[] = [];
 
     await admin
       .database()
@@ -325,7 +317,7 @@ exports.getAllMatchesToCsvFilterOnBalanceClimber = functions.https.onRequest(
           snapshot.forEach(function(childSnapshot) {
             const childData = childSnapshot.val();
             matches.push(
-              new Match(
+              new LiteMatch(
                 childData.team_num,
                 childData.match,
                 childData.tele_Balanced,
