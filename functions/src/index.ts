@@ -143,7 +143,7 @@ exports.getAllStudentsToCsv = functions.https.onRequest(
   }
 );
 
-exports.getAllMatchDataRawToCsv3 = functions.https.onRequest(
+exports.getAllMatchDataRawToCsv = functions.https.onRequest(
   async (req, response) => {
     const matches: Match[] = [];
 
